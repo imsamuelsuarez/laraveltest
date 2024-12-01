@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Tag;
 use App\Models\Job;
-use App\Models\country;
+use App\Models\Country;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        country::factory(100)->create();
+        Country::factory(100)->create();
         User::factory(100)->create();
         Job::factory(100)->create();
         Tag::factory(10)->create();
