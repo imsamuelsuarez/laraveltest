@@ -18,4 +18,8 @@ class Employer extends Model
     {
         return $this->hasMany(Task::class);
     }
+
+    public function cars() {
+        return $this->hasMany(Cars::class);
+    }
 }
