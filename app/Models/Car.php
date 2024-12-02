@@ -12,7 +12,7 @@ class Car extends Model
 
     protected $fillable = ['car_name', 'employer_id', 'user_id'];
 
-    public function employee() {
+    public function employer() {
         return $this->belongsTo(Employer::class);
     }
 
