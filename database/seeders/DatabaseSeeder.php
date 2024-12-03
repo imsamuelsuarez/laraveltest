@@ -17,10 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+    
         Country::factory(100)->create();
-        User::factory(100)->create();
+        User::factory(10)->create();
         Job::factory(100)->create();
         Tag::factory(10)->create();
        
+        $this->call(CarStateSeeder::class);
     }
 }
