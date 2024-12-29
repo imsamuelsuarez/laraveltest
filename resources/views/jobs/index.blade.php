@@ -5,6 +5,8 @@
 
  </x-slot:heading> 
 
+<a href="/jobs/create">Crear empleo</a>
+
 <section class="w-100 h-100 gap-10 flex justify-center items-center flex-wrap text-wrap text-center">
 @foreach($jobs as $job) 
 

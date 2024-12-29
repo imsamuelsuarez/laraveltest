@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Car;
 
+
+
 class Employer extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 
     public function jobs()
     {

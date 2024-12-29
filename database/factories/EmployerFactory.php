@@ -15,10 +15,16 @@ class EmployerFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+
+
     public function definition(): array
     {
+        static $ci = 1;
         return [
-            'name' => fake()->company(),
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'ci' => $ci++
         ];
     }
 

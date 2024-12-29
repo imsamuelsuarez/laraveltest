@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CarResource\Pages;
 use App\Filament\Resources\CarResource\RelationManagers;
+
 use App\Models\Car;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -28,7 +29,7 @@ class CarResource extends Resource
                 ->relationship('user', 'name')
                 ->required(),
                 Forms\Components\Select::make('employer_id')
-                ->relationship('employer', 'name')
+                ->relationship('employer', 'first_name')
                 ->required(),
                 Forms\Components\TextInput::make('car_name')
                     ->required(),
@@ -48,7 +49,7 @@ class CarResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('car_name')->label('Car Name'),
-                Tables\Columns\TextColumn::make('employer.name')->label('Employer'),
+                Tables\Columns\TextColumn::make('employer.first_name')->label('Employer'),
                 Tables\Columns\TextColumn::make('created_at')->label('Creation Date')->date(),
                 Tables\Columns\TextColumn::make('state_id')->label('Status'),
 
