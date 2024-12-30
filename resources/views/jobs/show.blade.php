@@ -5,7 +5,13 @@
 
  </x-slot:heading> 
 
+ <ul>
+        @foreach($job->getAttributes() as $key => $value)
+            <li>{{ ucfirst($key) }}: {{ $value }}</li>
+        @endforeach
+    </ul>
 
- <li> {{$job['title'] }}: {{$job['salary'] }}  </li>
+
+<x-button href="/jobs/edit/{{$job['id']}}">Editar</x-button>
 
  </x-layout>
