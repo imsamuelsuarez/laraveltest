@@ -6,6 +6,8 @@ use App\Filament\Resources\CarResource\Pages;
 use App\Filament\Resources\CarResource\RelationManagers;
 
 use App\Models\Car;
+use App\Models\CarBrand;
+use App\Models\CarModel;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,6 +16,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use \App\Filament\Widgets\CarsCount;
+use Filament\Forms\Get;
+use Illuminate\Support\Collection;
+
 
 class CarResource extends Resource
 {
@@ -27,11 +32,24 @@ class CarResource extends Resource
             ->schema([
                 Forms\Components\Select::make('user_id')
                 ->relationship('user', 'name')
+                ->searchable()
                 ->required(),
                 Forms\Components\Select::make('employer_id')
                 ->relationship('employer', 'first_name')
+                ->searchable()
                 ->required(),
-                Forms\Components\TextInput::make('car_name')
+                Forms\Components\Select::make('car_brand_id')
+                    ->relationship('carBrand', 'name')
+                    ->live()
+                    ->searchable()
+                    ->required(),
+                Forms\Components\Select::make('car_model_id')
+                    ->options(
+                        fn (Get $get) => CarModel::query()
+                            ->where('car_brand_id', $get('car_brand_id'))
+                            ->pluck('name', 'id')
+                    )
+                    ->preload()
                     ->required(),
                 Forms\Components\DatePicker::make('created_at')
                     ->disabled()
@@ -48,10 +66,10 @@ class CarResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('car_name')->label('Car Name'),
-                Tables\Columns\TextColumn::make('employer.first_name')->label('Employer'),
-                Tables\Columns\TextColumn::make('created_at')->label('Creation Date')->date(),
-                Tables\Columns\TextColumn::make('state_id')->label('Status'),
+                Tables\Columns\TextColumn::make('car_name')->label('Car Name')->sortable(),
+                Tables\Columns\TextColumn::make('employer.first_name')->label('Employer')->sortable(),
+                Tables\Columns\TextColumn::make('created_at')->label('Creation Date')->date()->sortable(),
+                Tables\Columns\TextColumn::make('state.label')->label('Status')->sortable(),
 
             ])
             ->filters([

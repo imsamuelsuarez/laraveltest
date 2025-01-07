@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "176de6d6eae07ca59878da5abee917a0",
+    "content-hash": "e9de28a947b279414404b7f46359c4b7",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -281,6 +281,50 @@
                 }
             ],
             "time": "2023-11-29T23:19:16+00:00"
+        },
+        {
+            "name": "car/brands-models",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/williamspinheiro/car-brands-models.git",
+                "reference": "1c82dbe4654a3a708ab317b9caaeb30f54f3b0c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/williamspinheiro/car-brands-models/zipball/1c82dbe4654a3a708ab317b9caaeb30f54f3b0c8",
+                "reference": "1c82dbe4654a3a708ab317b9caaeb30f54f3b0c8",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Car\\BrandsModels\\BrandsModelsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Car\\BrandsModels\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Pinheiro",
+                    "email": "william.pinheiro@outlook.com"
+                }
+            ],
+            "description": "Package for managing car brands and models.",
+            "support": {
+                "issues": "https://github.com/williamspinheiro/car-brands-models/issues",
+                "source": "https://github.com/williamspinheiro/car-brands-models/tree/v1.0.0"
+            },
+            "time": "2024-11-30T19:43:52+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",

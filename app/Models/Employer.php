@@ -28,4 +28,8 @@ class Employer extends Model
     public function cars() {
         return $this->hasMany(Car::class);
     }
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }

@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\CarBrand;
+
 
 class Car extends Model
 {
     /** @use HasFactory<\Database\Factories\CarFactory> */
     use HasFactory;
 
-    protected $fillable = ['car_name', 'employer_id', 'user_id', 'state_id'];
+    protected $fillable = ['employer_id', 'user_id', 'state_id', 'car_brand_id', 'car_model_id'];
 
     protected $attributes = [
         'state_id' => 1
@@ -27,5 +29,9 @@ class Car extends Model
 
     public function state() {
         return $this->belongsTo(CarStates::class);
+    }
+
+    public function carBrand() {
+        return $this->belongsTo(CarBrand::class);
     }
 }
